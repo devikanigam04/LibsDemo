@@ -1,7 +1,8 @@
-package app.com.volleydemo;
+package app.com.libsdemo;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -18,12 +19,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class VolleyDemo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(app.com.libsdemo.R.layout.activity_volley_demo);
+        ButterKnife.bind(this);
 
         // GET Method
         makeStringRequest();
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Post Method
         postStringRequest();
+    }
+
+    @OnClick(R.id.button2)
+    void volleyLink(){
+        Intent intent = new Intent(this, OkhttpDemo.class);
+        startActivity(intent);
     }
 
     private void postStringRequest() {
